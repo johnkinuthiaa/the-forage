@@ -5,11 +5,6 @@ import com.slippery.employeemanagement.models.Employee;
 import com.slippery.employeemanagement.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeManager employeeManager;
@@ -24,5 +19,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         response.setStatusCode(200);
         response.setEmployees(employeeManager.getEmployeeList());
         return response;
+    }
+
+    @Override
+    public EmployeeResponse addNewEmployee(Employee employee) {
+        return employeeManager.addOneEmployee(employee);
     }
 }

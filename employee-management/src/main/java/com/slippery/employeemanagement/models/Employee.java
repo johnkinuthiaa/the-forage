@@ -1,5 +1,7 @@
 package com.slippery.employeemanagement.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class Employee {
     private String employeeId;
     private String firstName;

@@ -1,5 +1,6 @@
 package com.slippery.employeemanagement.service.impl;
 
+import com.slippery.employeemanagement.dto.EmployeeResponse;
 import com.slippery.employeemanagement.models.Employee;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.UUID;
 public class EmployeeManager {
     List<Employee> employeeList = new ArrayList<>();
 
-    private void addEmployees(){
+    private void addAllEmployees(){
 
         UUID id =UUID.randomUUID();
         Employee employee1 = new Employee();
@@ -182,7 +183,15 @@ public class EmployeeManager {
     }
 
     public List<Employee> getEmployeeList() {
-        addEmployees();
+        addAllEmployees();
         return employeeList;
+    }
+    public EmployeeResponse addOneEmployee(Employee employee){
+        EmployeeResponse response =new EmployeeResponse();
+        employeeList.add(employee);
+        response.setEmployee(employee);
+        response.setMessage("New employee created");
+        response.setStatusCode(201);
+        return response;
     }
 }
